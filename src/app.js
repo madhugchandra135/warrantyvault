@@ -1,0 +1,14 @@
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import uploadRoutes from './routes/upload.js';
+import receiptsRoutes from './routes/receipts.js';
+const app = express();
+app.use(cors());
+app.use(bodyParser.json({limit: '15mb'}));
+app.use('/api/upload', uploadRoutes);
+app.use('/api/receipts', receiptsRoutes);
+app.get('/_health', (req,res)=>res.json({ok:true}));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, ()=> console.log(`Backend listening on ${PORT}`));
+export default app;
