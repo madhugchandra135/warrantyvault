@@ -1,0 +1,29 @@
+Quick start — for non-coders (Windows / Mac / Linux)
+--------------------------------------------------
+This will run a local demo (no cloud credentials required). It uses Docker, MinIO (S3-compatible), Postgres, and Tesseract OCR.
+
+Step 1 — Install Docker Desktop
+  - Windows / Mac: https://www.docker.com/products/docker-desktop
+  - Linux: install Docker Engine (your distro docs)
+
+Step 2 — Extract this ZIP to a folder (or clone repo locally)
+
+Step 3 — Open a terminal / command prompt and navigate into the folder:
+  cd path/to/warrantyvault
+
+Step 4 — Run the demo stack:
+  docker-compose up --build
+
+Step 5 — Wait ~1–3 minutes, then open your browser:
+  Frontend: http://localhost:5173
+  Backend health: http://localhost:3000/_health
+  MinIO Console (optional): http://localhost:9000 (user:minioadmin pass:minioadmin)
+
+Step 6 — Initialize MinIO bucket (optional)
+  - Install mc (MinIO client) and run: sh scripts/init_minio.sh
+  - Or create bucket `warrantyvault` via MinIO Console.
+
+Step 7 — Use the UI to upload a receipt. Demo uses Tesseract OCR to parse text.
+
+To stop:
+  docker-compose down
